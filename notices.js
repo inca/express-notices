@@ -4,7 +4,7 @@ var vsprintf = require("sprintf").vsprintf;
 
 module.exports = function(req, res, next) {
 
-  var notices = {
+  var notices = res.notices = res.locals.notices = {
 
     get: function() {
       var all = req.session.notices;
@@ -19,9 +19,9 @@ module.exports = function(req, res, next) {
       if (!all)
         all = [];
       // Format message
-      var message = m,
-          params = args.slice(2);
-      if (req.i18n && req.i18n.__ && typeof (req.i18n.__ == 'function')) {
+      var message = m;
+      var params = args.slice(2);
+      if (req.i18n && req.i18n.__ && typeof req.i18n.__ == 'function') {
         message = req.i18n.__.apply(null,[m].concat(params));
       } else {
         message = vsprintf(m, params);
@@ -54,7 +54,17 @@ module.exports = function(req, res, next) {
 
   };
 
-  res.notices = res.locals.notices = notices;
-
   next();
+};
+
+module.exports.extend = function(obj) {
+  return function(req, res, next) {
+    module.exports(req, res, function() {
+      for (var i in obj) {
+        if (obj.hasOwnProperty(i))
+          res.notices[i] = obj[i];
+      }
+      next();
+    });
+  }
 };
