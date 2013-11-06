@@ -1,0 +1,19 @@
+{
+  "name": "express-notices",
+  "version": "0.0.1",
+  "description": "Simple i18n-friendly session-based notices for Express",
+  "dependencies": {
+    "sprintf": "*"
+  },
+  "main": "notices.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/inca/express-notices"
+  },
+  "keywords": [ "express", "http", "notices", "web" ],
+  "author": "Boris Okunskiy",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/inca/express-notices/issues"
+  }
+}
