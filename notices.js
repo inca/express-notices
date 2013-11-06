@@ -32,19 +32,23 @@ module.exports = function(req, res, next) {
         msg: message
       });
       req.session.notices = all;
-      return notices;
+      return this;
     },
 
-    info: function(msg) {
-      return notices.add('info', msg);
+    add_argv: function(kind, argv) {
+      return this.add.apply(this, [kind].concat(Array.prototype.slice.call(argv)));
     },
 
-    warn: function(msg) {
-      return notices.add('warn', msg);
+    info: function() {
+      return this.add_argv('info', arguments);
     },
 
-    error: function(msg) {
-      return notices.add('error', msg);
+    warn: function() {
+      return this.add_argv('warn', arguments);
+    },
+
+    error: function() {
+      return this.add_argv('error', arguments);
     },
 
     send: function() {

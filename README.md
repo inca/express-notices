@@ -78,11 +78,11 @@ If you aren't satisfied with default notice levels — `info`, `warn` and `error
 app.use(require('express-notices').extend({
 
   goldAdd: function(amount) {
-    this.add('gold', 'You have earned %s gold coins.', amount);
+    return this.add('gold', 'You have earned %s gold coins.', amount);
   },
 
   goldRemove: function(amount) {
-    this.add('gold', 'You have lost %s gold coins.', amount);
+    return this.add('gold', 'You have lost %s gold coins.', amount);
   }
 
 }));
