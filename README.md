@@ -2,7 +2,7 @@
 
 The `express-notices` module provides a simple middleware for throwing high-level error, warning and information messages.
 
-Works best with client-side frameworks (e.g. [ScalpelJS](http://inca.github.io/scalpeljs).
+Works best with client-side frameworks (e.g. [ScalpelJS](http://inca.github.io/scalpeljs)).
 
 ## Installation
 
@@ -62,7 +62,7 @@ Just apply some styling with CSS and you're all set.
 
 ## More usage
 
-Pass paramters like this:
+Pass parameters like this:
 
 ```
 res.notices.info('Your request have been processed.');
@@ -85,7 +85,7 @@ app.use(require('express-notices').extend({
     this.add('gold', 'You have lost %s gold coins.', amount);
   }
 
-});
+}));
 ```
 
 ## I18N

@@ -20,9 +20,9 @@ module.exports = function(req, res, next) {
         all = [];
       // Format message
       var message = m;
-      var params = args.slice(2);
+      var params = Array.prototype.slice.call(arguments, 2);
       if (req.i18n && req.i18n.__ && typeof req.i18n.__ == 'function') {
-        message = req.i18n.__.apply(null,[m].concat(params));
+        message = req.i18n.__.apply(req.i18n, [m].concat(params));
       } else {
         message = vsprintf(m, params);
       }
