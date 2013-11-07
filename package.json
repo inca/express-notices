@@ -1,6 +1,6 @@
 {
   "name": "express-notices",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Simple i18n-friendly session-based notices for Express",
   "dependencies": {
     "sprintf": "*"
